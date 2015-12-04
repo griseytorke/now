@@ -1,9 +1,25 @@
 Rails.application.routes.draw do
   #resources :insights
   #resources :comments
+  #devise_for :users
+   # resources :posts
   devise_for :users
     resources :posts
-  
+
+  # workaround discussed: 
+  # http://stackoverflow.com/questions/4954876/setting-devise-login-to-be-root-page
+
+  devise_scope :user do
+    authenticated :user do
+      # actually, have this root to the get-user-geoloc page
+      root 'posts#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+
   # make posts the index/home page
   root to: "posts#index"
 
