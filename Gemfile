@@ -4,7 +4,7 @@ ruby '2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 
-gem 'devise', '3.5.2'
+gem 'devise'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
