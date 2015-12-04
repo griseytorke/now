@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
 
-  # 
+
+
+  geocoded_by :address
+  # will only make another API requests if address has changed
+  after_validation :geocode, :if => :address_changed? 
   
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204063833) do
+ActiveRecord::Schema.define(version: 20151204085545) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "link_id"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 20151204063833) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
