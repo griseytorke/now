@@ -6,6 +6,8 @@ gem 'rails', '4.2.5'
 
 gem 'devise'
 
+gem 'simple_form', '~> 3.2'
+
 # better error reporting for Rails, includes an REPL
 gem 'binding_of_caller', '~> 0.7.2'
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
