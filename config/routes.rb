@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   #resources :comments
   #devise_for :users
    # resources :posts
-  devise_for :users
+
+   get '/pages/:page' => 'pages#show'
+
+  devise_for :users,
+    :controllers => { registrations: 'registrations' }
     resources :posts
 
   # workaround discussed: 
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
     authenticated :user do
       # actually, have this root to the get-user-geoloc page
       root 'posts#index', as: :authenticated_root
+      # root 'pages#show', as: :authenticated_root
     end
 
     unauthenticated do

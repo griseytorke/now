@@ -1,11 +1,20 @@
-<% @posts.each do |post| %>
-  <div class="post row clearfix">
-    <h2>
-      <%= link_to post.title, post %><br>
-      <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> <% if post.user %> by <%= post.user.email %><% end %></small>
-    </h2>
-  </div>
-<% end %>
+
+
+<% if @posts.count > 0 %>
+  <% @posts.each do |post| %>
+    <div>
+    <h2> <%= link_to post.title, post %> </h2>
+     <blockquote><p><%= raw post.content %></p>
+      <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> <% if post.user %> by <%= post.user.name %><% end %></small> </blockquote>
+     </div>
+  <% end %>
+
+  <% else %>
+  <p><em>Oops, it doesn't look like there are any posts yet.</p> 
+
+  <p>Why don't you be the first brave soul in your area to say something?</em></p>
+	<% end %>
+
 
 
 
