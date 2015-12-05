@@ -3,13 +3,18 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   # GET /posts
   # GET /posts.json
+
+
+
+  # for index, additional .order method and descending order parameter
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at DESC")
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+
   end
 
   # GET /posts/new
@@ -20,6 +25,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    # added
+    # @post = current_user
   end
 
   # POST /posts
@@ -30,7 +37,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: 'The dog inside the computer made the post for you!' }
         format.json { render :show, status: :created, location: @post }
         # render :show vs render :index
       else
@@ -45,7 +52,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Post was updated by a cat. Beautiful!' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -59,11 +66,12 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: 'Post was savagely destroyed by a big mean bear.' }
       format.json { head :no_content }
     end
   end
 
+  # turned on/off private
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

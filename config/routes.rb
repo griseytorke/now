@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #devise_for :users
    # resources :posts
 
-   get '/pages/:page' => 'pages#show'
+   # get '/pages/:page' => 'pages#show'
 
   devise_for :users,
     :controllers => { registrations: 'registrations' }
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   # make posts the index/home page
+  # unnecessary because of your Devise manipulations? 
   root to: "posts#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
