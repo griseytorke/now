@@ -41,4 +41,5 @@ test:
 # don't need to change because production is only relevant to Heroku? 
 production:
   <<: *default
-  database: db/production.sqlite3
+# production database not relevant because it is managed by Heroku
+# database: db/production.sqlite3

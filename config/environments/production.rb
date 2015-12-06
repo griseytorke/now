@@ -1,6 +1,29 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # added from discussion, to allow devise to mail password resets with heroku:
+  config.action_mailer.default_url_options = { :host => 'nowcs50finalproject.herokuapp.com' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  # changed below from false to true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "gmail.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: "nowcs50finalproject@gmail.com",
+  password: "heroku50"
+  }
+  ########
+
+
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

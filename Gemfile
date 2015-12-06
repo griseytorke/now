@@ -55,6 +55,7 @@ group :development, :test do
   gem 'byebug'
 end
 
+# Use sqlite3 for development (i.e. localhosting modifications)
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'sqlite3'
