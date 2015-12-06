@@ -23,6 +23,8 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
+development: 
+  <<: *default
 
 
 # Warning: The database defined as "test" will be erased and

@@ -63,9 +63,11 @@ group :development do
   gem 'spring'
 end
 
-
+# heroku
+gem 'puma'
 # for Heroku 
 gem 'rails_12factor', group: :production
+
 
 
 
