@@ -1,23 +1,17 @@
 Rails.application.routes.draw do
-  #resources :insights
-  #resources :comments
-  #devise_for :users
-   # resources :posts
-
-   # get '/pages/:page' => 'pages#show'
 
   devise_for :users,
     :controllers => { registrations: 'registrations' }
     resources :posts
 
-  # workaround discussed: 
+  # this workaround comes from:
   # http://stackoverflow.com/questions/4954876/setting-devise-login-to-be-root-page
 
+  # if user logged in, direct to index.html.erb
+  # if user not logged in, direct to Devise registration ('sign up') page  
   devise_scope :user do
     authenticated :user do
-      # actually, have this root to the get-user-geoloc page
       root 'posts#index', as: :authenticated_root
-      # root 'pages#show', as: :authenticated_root
     end
 
     unauthenticated do
@@ -25,9 +19,10 @@ Rails.application.routes.draw do
     end
   end
 
-  # make posts the index/home page
-  # unnecessary because of your Devise manipulations? 
+  # set the home page ('root') as posts' index
+  # allows top left corner text to always link back to main page
   root to: "posts#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

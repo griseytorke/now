@@ -4,9 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
 
-
-
-  # for index, additional .order method and descending order parameter
+  # get all posts, sort them in descending chronoological order; then fill @posts variable
   def index
     @posts = Post.all.order("created_at DESC")
   end
@@ -14,32 +12,25 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-
   end
 
   # GET /posts/new
   def new
     @post = current_user.posts.build
-    # @post = Post.new
   end
 
   # GET /posts/1/edit
   def edit
-    # added
-    # @post = current_user
   end
 
   # POST /posts
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
-    # @post = Post.new(post_params)
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'The dog inside the computer made the post for you!' }
         format.json { render :show, status: :created, location: @post }
-        # render :show vs render :index
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -71,7 +62,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # turned on/off private
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

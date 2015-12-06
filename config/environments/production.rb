@@ -6,10 +6,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  # changed below from false to true
+  
+  # changed from false to true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
+  # not ideal from security standpoint; but config variable methods were not working
+  # hardcoding Gmail info for Devise mailer:
   config.action_mailer.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,

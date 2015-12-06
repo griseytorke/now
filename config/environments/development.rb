@@ -17,11 +17,11 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
   # made true
   config.action_mailer.raise_delivery_errors = true
 
-  # added the below info: 
+  # not ideal from security standpoint; but config variable methods were not working
+  # hardcoding Gmail info for Devise mailer:
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {

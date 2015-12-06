@@ -14,8 +14,7 @@
 #   <<: *default
 #   database: db/development.sqlite3
 
-# you should already head postgres in your bin? 
-# what would 
+# postgresql required for Heroku deployment
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -23,6 +22,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
+# use sqlite for development mode, e.g. web app hosted on localhost
 development: 
   adapter: sqlite3
   pool: 5
@@ -38,7 +38,7 @@ test:
   database: db/test.sqlite3
 
 
-# don't need to change because production is only relevant to Heroku? 
+# set to default; production is only relevant to Heroku
 production:
   <<: *default
 # production database not relevant because it is managed by Heroku

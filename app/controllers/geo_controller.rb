@@ -1,2 +1,0 @@
-class GeoController < ApplicationController
-end
